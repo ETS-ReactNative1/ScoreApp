@@ -48,11 +48,28 @@ function FindPage() {
         case "d":
           return(<Image style={{width: 200, height: 200}} source={require('../img/scoreD.png')} resizeMode="contain"/>)
         case "d":
-          return(<Image style={{width: 200, height: 200}} source={require('../img/scoreD.png')} resizeMode="contain"/>)
+          return(<Image style={{width: 200, height: 200}} source={require('../img/scoreE.png')} resizeMode="contain"/>)
          default:
            break;
        }
      }
+     function PrintEcoScore(score) {
+      console.log(score);
+      switch (score) {
+       case "a":
+          return(<Image style={{width: 200, height: 200}} source={require('../img/ecoA.png')} resizeMode="contain"/>)
+       case "b":
+         return(<Image style={{width: 200, height: 200}} source={require('../img/ecoB.png')} resizeMode="contain"/>)
+       case "c":
+         return(<Image style={{width: 200, height: 200}} source={require('../img/ecoC.png')} resizeMode="contain"/>)
+       case "d":
+         return(<Image style={{width: 200, height: 200}} source={require('../img/ecoD.png')} resizeMode="contain"/>)
+       case "d":
+         return(<Image style={{width: 200, height: 200}} source={require('../img/ecoE.png')} resizeMode="contain"/>)
+        default:
+          break;
+      }
+    }
 
   return (
     <View style={styles.container}>
@@ -81,6 +98,8 @@ function FindPage() {
                 resizeMode="contain"
                 />
                 {PrintNutriScore(data.product.nutrition_grade_fr)}
+                {PrintEcoScore(data.product.ecoscore_data.grade_fr)}
+                <Text style={styles.ingredients}>{data.product.ingredients_text_fr}</Text>
             </View>
           </ScrollView>
         }
@@ -160,6 +179,10 @@ const styles = StyleSheet.create({
     fontSize:20,
     width:"80%",
     textAlign:"center"
+  },
+  ingredients:{
+    textAlign: "justify",
+    padding: 20
   }
 });
 
