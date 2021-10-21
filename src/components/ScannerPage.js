@@ -4,6 +4,8 @@ import { TextInput } from 'react-native-gesture-handler';
 
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
+import Product from './Product';
+
 
 function ScannerPage() {
     //State
@@ -97,6 +99,11 @@ function ScannerPage() {
                 <Text>Arreter</Text>
             </Pressable>
         }
+        {data &&
+          <ScrollView style={styles.scroll}>
+            <Product data={data}/>
+        </ScrollView>
+        }
     </View>
     
 </>
@@ -127,7 +134,11 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         borderRadius: 30,
         backgroundColor: 'tomato'
-      }
+      },
+      scroll:{
+        flex:1,
+        width:"100%",
+      },
 });
 
 export default ScannerPage;
