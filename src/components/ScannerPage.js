@@ -12,6 +12,9 @@ function ScannerPage() {
         //Resultat de la reponse de la permission d'utiliser l'appareil photo
     const [hasPermission, setHasPermission] = useState(null);
 
+    const [data, setData] = useState();
+    const [message, setMessage] = useState();
+
     //Le toogle pour la view du scan
     function handleScan() {
         setUserIsScanning(!userIsScanning)
@@ -31,6 +34,7 @@ function ScannerPage() {
     const handleBarCodeScanned = ({ type, data }) => {
         //Passe a false pour fermer la view scan
         setUserIsScanning(false);
+        getInfo(data);
         //Log du scan
         console.log('Type: ' + type + '\nData: ' + data)
     };
@@ -48,6 +52,26 @@ function ScannerPage() {
             <Button title={'Allow Camera'} onPress={() => askForCameraPermission()} />
           </View>)
       }
+
+      const getInfo = async (barCode) => {
+        fetch(`https://world.openfoodfacts.org/api/v0/product/${barCode}.json`)
+           .then((res) => {
+             res.json()
+             .then((reponse) => {
+               console.log(reponse.status);
+               if (reponse.status === 1) {
+                 setMessage()
+                 setData(reponse)
+                 console.log(reponse.product.product_name_fr);
+               } else {
+                 setData()
+                 setMessage("Aucune données trouvées pour ce Code Barre")
+                 setTimeout(function(){ setMessage()}, 3000);
+               }
+             })
+           })
+           .catch((err) => console.log(err))
+       }
 
   return (<>
     <View style={styles.container}>
