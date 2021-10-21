@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground , Pressable} from 'react-native';
+import React, { useState , useEffect } from 'react';
+import { StyleSheet, Text, View, Image, ImageBackground , Pressable, ScrollView} from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 
@@ -7,6 +7,7 @@ function FindPage() {
 
     const [barCode, setBarcode] = useState();
     const [data, setData] = useState();
+    const [message, setMessage] = useState();
 
 
     function findData(barCode) {
@@ -23,15 +24,52 @@ function FindPage() {
     }
 
     const getInfo = async (barCode) => {
-        try {
-         const response = await fetch(`https://world.openfoodfacts.org/api/v0/product/${barCode}.json`);
-         const json = await response.json();
-         setData(json);
-         console.log("recherche ok");
-       } catch (error) {
-           console.error(error);
-        } 
+      fetch(`https://world.openfoodfacts.org/api/v0/product/${barCode}.json`)
+         .then((res) => {
+           res.json()
+           .then((reponse) => {
+             console.log(reponse.status);
+             if (reponse.status === 1) {
+               setMessage()
+               setData(reponse)
+             } else {
+               setData()
+               setMessage("Aucune données trouvées pour ce Code Barre")
+               setTimeout(function(){ setMessage()}, 3000);
+             }
+           })
+         })
+         .catch((err) => console.log(err))
      }
+
+     function PrintNutriScore(score) {
+       console.log(score);
+       switch (score) {
+        case "a":
+           return(
+           <Image style={{width: 200, height: 200}} source={require('../img/scoreA.png')} resizeMode="contain"/>
+           )
+        case "b":
+          return(
+            <Image style={{width: 200, height: 200}} source={require('../img/scoreB.png')} resizeMode="contain"/>
+            )
+        case "c":
+          return(
+            <Image style={{width: 200, height: 200}} source={require('../img/scoreC.png')} resizeMode="contain"/>
+            )
+        case "d":
+          return(
+            <Image style={{width: 200, height: 200}} source={require('../img/scoreD.png')} resizeMode="contain"/>
+            )
+        case "d":
+          return(
+            <Image style={{width: 200, height: 200}} source={require('../img/scoreD.png')} resizeMode="contain"/>
+            )
+         default:
+           break;
+       }
+     }
+
 
   return (
     <View style={styles.container}>
@@ -51,14 +89,20 @@ function FindPage() {
         </View>
         
         {data && 
+          <ScrollView style={styles.scroll}>
             <View style={styles.articles}>
-                <Text>{data.product.product_name_fr}</Text>
+                <Text style={styles.name_product}>{data.product.product_name_fr}</Text>
                 <Image
-                style={{width: 200, height: 200}}
+                style={ styles.image_product}
                 source={{uri : `${data.product.image_url}`}}
                 resizeMode="contain"
                 />
+                {PrintNutriScore(data.product.nutrition_grade_fr)}
             </View>
+          </ScrollView>
+        }
+        {message && 
+          <Text style={styles.message}>{message}</Text>
         }
 
     </View>
@@ -98,9 +142,41 @@ const styles = StyleSheet.create({
       borderColor: "#00867d",
       borderWidth:2,
   },
+  scroll:{
+    flex:1,
+    width:"100%",
+  },
   articles:{
       backgroundColor: "white",
       width:"80%",
+      marginTop:20,
+      marginLeft:"auto",
+      marginRight:"auto",
+      borderRadius:20,
+      borderWidth:2,
+      borderTopLeftRadius: 20,
+      borderColor: "#82e9de",
+      alignItems: "center",
+      marginBottom:50
+  },
+  name_product:{
+    width:"100%",
+    fontSize:20,
+    textAlign:"center",
+    backgroundColor: "#82e9de",
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+  image_product:{
+    marginTop:20,
+    height:300,
+    width:300
+  },
+  message:{
+    marginTop:20,
+    fontSize:20,
+    width:"80%",
+    textAlign:"center"
   }
 });
 
