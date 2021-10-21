@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import Home from './src/components/Home';
 import FindPage from './src/components/FindPage';
+import ScannerPage from './src/components/ScannerPage';
 
 const Drawer = createDrawerNavigator();
 
@@ -16,7 +17,8 @@ export default function App() {
     <NavigationContainer>      
       <Drawer.Navigator initialRouteName="Home">        
         <Drawer.Screen name="Accueil" component={Home} />
-        <Drawer.Screen name="Rechercher" component={FindPage} />
+        <Drawer.Screen name="Rechercher en tapotant" component={FindPage} />
+        <Drawer.Screen name="Rechercher en scannant" component={ScannerPage} />
       </Drawer.Navigator>    
     </NavigationContainer>
   );

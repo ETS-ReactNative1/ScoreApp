@@ -1,5 +1,5 @@
 import React, { useState , useEffect } from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground , Pressable, ScrollView} from 'react-native';
+import { StyleSheet, Text, View, Image, Pressable, ScrollView} from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 
@@ -14,13 +14,7 @@ function FindPage() {
         console.log(barCode);
         getInfo(barCode);
         setBarcode("")
-        /* console.log(data?.code);
-       console.log(data?.product.image_url);
-       console.log(data?.product.ingredients_text_fr);
-       console.log(data?.product.nutrition_grade_fr);
-       console.log(data?.product.product_name_fr);
-       console.log(data?.product.generic_name_fr);
-       console.log(data?.product.ecoscore_data.grade_fr); */
+        
     }
 
     const getInfo = async (barCode) => {
@@ -46,30 +40,19 @@ function FindPage() {
        console.log(score);
        switch (score) {
         case "a":
-           return(
-           <Image style={{width: 200, height: 200}} source={require('../img/scoreA.png')} resizeMode="contain"/>
-           )
+           return(<Image style={{width: 200, height: 200}} source={require('../img/scoreA.png')} resizeMode="contain"/>)
         case "b":
-          return(
-            <Image style={{width: 200, height: 200}} source={require('../img/scoreB.png')} resizeMode="contain"/>
-            )
+          return(<Image style={{width: 200, height: 200}} source={require('../img/scoreB.png')} resizeMode="contain"/>)
         case "c":
-          return(
-            <Image style={{width: 200, height: 200}} source={require('../img/scoreC.png')} resizeMode="contain"/>
-            )
+          return(<Image style={{width: 200, height: 200}} source={require('../img/scoreC.png')} resizeMode="contain"/>)
         case "d":
-          return(
-            <Image style={{width: 200, height: 200}} source={require('../img/scoreD.png')} resizeMode="contain"/>
-            )
+          return(<Image style={{width: 200, height: 200}} source={require('../img/scoreD.png')} resizeMode="contain"/>)
         case "d":
-          return(
-            <Image style={{width: 200, height: 200}} source={require('../img/scoreD.png')} resizeMode="contain"/>
-            )
+          return(<Image style={{width: 200, height: 200}} source={require('../img/scoreD.png')} resizeMode="contain"/>)
          default:
            break;
        }
      }
-
 
   return (
     <View style={styles.container}>
@@ -184,3 +167,11 @@ export default FindPage;
 //#4db6ac
 //#82e9de
 //#00867d
+
+/* console.log(data?.code);
+       console.log(data?.product.image_url);
+       console.log(data?.product.ingredients_text_fr);
+       console.log(data?.product.nutrition_grade_fr);
+       console.log(data?.product.product_name_fr);
+       console.log(data?.product.generic_name_fr);
+       console.log(data?.product.ecoscore_data.grade_fr); */
