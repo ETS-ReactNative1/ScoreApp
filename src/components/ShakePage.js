@@ -5,7 +5,6 @@ import { DeviceMotion } from 'expo-sensors';
 
 function ShakePage() {
   const [DM , setDM] = useState(null);
-  const [data, setData] = useState("Article")
   
   DeviceMotion.setUpdateInterval(10)
 
@@ -13,19 +12,19 @@ function ShakePage() {
       DeviceMotion.addListener(motion => {
         setDM(motion)
       })
-     
       
-  },[])
-
-
-  if (DM) {
-    if (DM.acceleration.x >= 30) {
-      console.log("---");
-      console.log("ca bouge30");
-      console.log("---");
-      DeviceMotion.removeAllListeners();
+      
+    },[])
+    
+    if (DM) {
+      if (DM.acceleration.x >= 5) {
+        console.log("---");
+        console.log("ca bouge30");
+        console.log("---");
+        DeviceMotion.removeAllListeners();
+      }
     }
-  }
+
   
 
   
@@ -35,7 +34,6 @@ function ShakePage() {
       <Text>
         Try editing me! 2🎉
       </Text>
-      {data && <Text>{data}</Text>}
       {DM && <Text>{DM.acceleration.x}</Text>}
     </View>
   );

@@ -77,36 +77,34 @@ function ScannerPage() {
 
   return (<>
     <View style={styles.container}>
-        <Text>Scanner Page</Text>
-        {userIsScanning && 
-    <View style={styles.barcodebox}>
-    <BarCodeScanner
-      onBarCodeScanned={handleBarCodeScanned}
-      style={{ height: 400, width: 400 }} />
-    </View>
-    }
-        {!userIsScanning &&
-            <Pressable 
-                style={styles.button_scanner}
-                onPress={()=> handleScan()}>
-                <Text>Scanner</Text>
-            </Pressable>
-        }
-        {userIsScanning && 
-            <Pressable 
-                style={styles.button_scanner}
-                onPress={()=> handleScan()}>
-                <Text>Arreter</Text>
-            </Pressable>
-        }
-        {data &&
-          <ScrollView style={styles.scroll}>
-            <Product data={data}/>
+      {userIsScanning && 
+        <View style={styles.barcodebox}>
+          <BarCodeScanner
+            onBarCodeScanned={handleBarCodeScanned}
+            style={{ height: 400, width: 400 }} />
+        </View>
+      }
+      {!userIsScanning &&
+        <Pressable 
+          style={styles.button_scanner}
+          onPress={()=> handleScan()}>
+          <Text>Scanner</Text>
+        </Pressable>
+      }
+      {userIsScanning && 
+        <Pressable 
+          style={styles.button_scanner}
+          onPress={()=> handleScan()}>
+          <Text>Arreter</Text>
+        </Pressable>
+      }
+      {data &&
+        <ScrollView style={styles.scroll}>
+          <Product data={data}/>
         </ScrollView>
-        }
+      }
     </View>
-    
-</>
+  </>
   );
 }
 
@@ -117,6 +115,7 @@ const styles = StyleSheet.create({
         alignItems:"center"
       },
     button_scanner:{
+        marginTop: 20,
         backgroundColor: "white",
         width:"50%",
         height:40,
@@ -127,6 +126,7 @@ const styles = StyleSheet.create({
         borderWidth:2,
     },
     barcodebox: {
+        marginTop: 20,
         alignItems: 'center',
         justifyContent: 'center',
         height: 300,

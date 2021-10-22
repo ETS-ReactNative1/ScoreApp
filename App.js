@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React ,{ useState } from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
+import React ,{ useState , useEffect} from 'react';
+import { StyleSheet, Text, View, Image, ImageBackground , SafeAreaView} from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -15,6 +15,34 @@ const Drawer = createDrawerNavigator();
 export default function App() {
 
   const [isLog, setIsLog] =useState(true)
+  const [splashScreen, setSplashscreen] = useState(true);
+  const [topPosition, setTopPosition] = useState(0);
+
+  useEffect(() => {
+    // set TimeOut permet d'afficher le slpashcreen pendant 2 sec et le set false ensuite
+    setTimeout(() => setSplashscreen(false), 3000);
+
+  }, []);
+
+  
+
+  if (splashScreen === true) {
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#1E90FF" }}>
+        <View
+          style={{
+            flex: 1,
+            alignItems: "center"
+          }}>
+          <Image
+            style={{ width: "100%" , height: "100%"}}
+            source={require("./src/img/background.jpg")}
+          />
+        </View>
+      </SafeAreaView>
+    );
+  }
+
 
 
   return (
