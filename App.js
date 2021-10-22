@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React ,{ useState } from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
@@ -14,14 +14,19 @@ const Drawer = createDrawerNavigator();
 
 export default function App() {
 
+  const [isLog, setIsLog] =useState(true)
+
 
   return (
     <NavigationContainer>      
       <Drawer.Navigator initialRouteName="Home">        
         <Drawer.Screen name="Accueil" component={Home} />
+        {isLog && <>
         <Drawer.Screen name="Rechercher en tapotant" component={FindPage} />
         <Drawer.Screen name="Rechercher en scannant" component={ScannerPage} />
         <Drawer.Screen name="Shake Shake Shake" component={ShakePage} />
+        </>
+        }
       </Drawer.Navigator>    
     </NavigationContainer>
   );
