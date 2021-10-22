@@ -7,8 +7,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import Home from './src/components/Home';
 import FindPage from './src/components/FindPage';
 import ScannerPage from './src/components/ScannerPage';
+import ShakePage from './src/components/ShakePage';
 
 const Drawer = createDrawerNavigator();
+
 
 export default function App() {
 
@@ -19,6 +21,7 @@ export default function App() {
         <Drawer.Screen name="Accueil" component={Home} />
         <Drawer.Screen name="Rechercher en tapotant" component={FindPage} />
         <Drawer.Screen name="Rechercher en scannant" component={ScannerPage} />
+        <Drawer.Screen name="Shake Shake Shake" component={ShakePage} />
       </Drawer.Navigator>    
     </NavigationContainer>
   );
