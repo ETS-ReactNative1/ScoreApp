@@ -1,8 +1,10 @@
 import React, { useState , useEffect } from 'react';
-import { StyleSheet, Text, View, Image, Pressable, ScrollView, Button} from 'react-native';
+import { StyleSheet, Text, View, Image, Pressable, ScrollView, Button, ImageBackground, KeyboardAvoidingView} from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import Product from './Product';
+import background2 from '../img/background2.png';
+
 
 
 function FindPage() {
@@ -41,7 +43,8 @@ function FindPage() {
 
   return (
     <View style={styles.container}>
-        <View style={styles.find_top}>
+          <ImageBackground source={background2} resizeMode="cover" style={styles.image}>
+          <View style={styles.find_top}>
             <Text style={styles.title}>Entrez un code barre :</Text>
             <TextInput 
                 style={styles.input}
@@ -49,7 +52,7 @@ function FindPage() {
                 onChangeText={setBarcode}
                 placeholder="ex : 3245413125316"
                 keyboardType="numeric"
-            />
+                />
             <Pressable style={styles.button_find}
                 onPress={()=> findData(barCode)}>
                 <Text>Rechercher</Text>
@@ -65,11 +68,18 @@ function FindPage() {
           <Text style={styles.message}>{message}</Text>
         }
 
+      </ImageBackground>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  image: {
+    flex: 1,
+    width:'100%',
+    height:"100%",
+    alignItems:"center",
+  },
   container: {
     flex: 1,
     backgroundColor: '#4db6ac',
@@ -101,6 +111,7 @@ const styles = StyleSheet.create({
       borderRadius: 20,
       borderColor: "#00867d",
       borderWidth:2,
+      marginBottom:20,
   },
   scroll:{
     flex:1,

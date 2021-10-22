@@ -6,6 +6,8 @@ import { BarCodeScanner } from 'expo-barcode-scanner';
 
 import Product from './Product';
 
+import background from '../img/background.png';
+
 
 function ScannerPage() {
     //State
@@ -77,6 +79,7 @@ function ScannerPage() {
 
   return (<>
     <View style={styles.container}>
+    <ImageBackground source={background} resizeMode="cover" style={styles.image}>
       {userIsScanning && 
         <View style={styles.barcodebox}>
           <BarCodeScanner
@@ -86,15 +89,15 @@ function ScannerPage() {
       }
       {!userIsScanning &&
         <Pressable 
-          style={styles.button_scanner}
-          onPress={()=> handleScan()}>
+        style={styles.button_scanner}
+        onPress={()=> handleScan()}>
           <Text>Scanner</Text>
         </Pressable>
       }
       {userIsScanning && 
         <Pressable 
-          style={styles.button_scanner}
-          onPress={()=> handleScan()}>
+        style={styles.button_scanner}
+        onPress={()=> handleScan()}>
           <Text>Arreter</Text>
         </Pressable>
       }
@@ -103,12 +106,18 @@ function ScannerPage() {
           <Product data={data}/>
         </ScrollView>
       }
+      </ImageBackground>
     </View>
   </>
   );
 }
 
 const styles = StyleSheet.create({
+  image: {
+    flex: 1,
+    width:'100%',
+    alignItems:"center",
+  },
     container: {
         flex: 1,
         backgroundColor: '#4db6ac',
