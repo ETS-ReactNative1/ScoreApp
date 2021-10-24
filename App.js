@@ -11,12 +11,13 @@ import ShakePage from './src/components/ShakePage';
 
 const Drawer = createDrawerNavigator();
 
-
+// ajouter refresh pour reset data dans find
+//android ripper on button
+// modal avec fade pour resultat de recherche
 export default function App() {
 
   const [isLog, setIsLog] =useState(true)
   const [splashScreen, setSplashscreen] = useState(true);
-  const [topPosition, setTopPosition] = useState(0);
 
   useEffect(() => {
     // set TimeOut permet d'afficher le slpashcreen pendant 2 sec et le set false ensuite
