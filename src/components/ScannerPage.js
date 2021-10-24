@@ -1,5 +1,5 @@
 import React, { useState , useEffect } from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground , Pressable, ScrollView, Button, TouchableHighlight} from 'react-native';
+import { StyleSheet, Text, View, Image , RefreshControl, ImageBackground , Pressable, ScrollView, Button, TouchableHighlight} from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import { BarCodeScanner } from 'expo-barcode-scanner';
@@ -18,6 +18,8 @@ function ScannerPage() {
 
     const [data, setData] = useState();
     const [message, setMessage] = useState();
+    const [refresh, setRefresh] = useState();
+
 
     //Le toogle pour la view du scan
     function handleScan() {
@@ -77,10 +79,19 @@ function ScannerPage() {
            })
            .catch((err) => console.log(err))
        }
+       function clearData() {
+        setRefresh(true);
+        setData()
+        setRefresh(false);
+      }
 
   return (<>
-    <View style={styles.container}>
     <ImageBackground source={background} resizeMode="cover" style={styles.image}>
+    <ScrollView style={styles.container}
+    refreshControl={
+      <RefreshControl
+          refreshing={refresh}
+          onRefresh={clearData}/>}>
       {userIsScanning && 
         <View style={styles.barcodebox}>
           <BarCodeScanner
@@ -107,12 +118,12 @@ function ScannerPage() {
         </TouchableHighlight>
       }
       {data &&
-        <ScrollView style={styles.scroll}>
+        <View style={styles.scroll}>
           <Product data={data}/>
-        </ScrollView>
+        </View>
       }
+    </ScrollView>
       </ImageBackground>
-    </View>
   </>
   );
 }
@@ -120,14 +131,10 @@ function ScannerPage() {
 const styles = StyleSheet.create({
   image: {
     flex: 1,
-    width:'100%',
-    alignItems:"center",
   },
-    container: {
-        flex: 1,
-        backgroundColor: '#4db6ac',
-        alignItems:"center"
-      },
+  container: {
+    flex: 1,
+  },
     button_scanner:{
         marginTop: 20,
         backgroundColor: "white",
@@ -138,6 +145,8 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         borderColor: "#00867d",
         borderWidth:2,
+        marginLeft:"auto",
+        marginRight:"auto",
     },
     barcodebox: {
         marginTop: 20,
@@ -147,7 +156,9 @@ const styles = StyleSheet.create({
         width: 300,
         overflow: 'hidden',
         borderRadius: 30,
-        backgroundColor: 'tomato'
+        backgroundColor: 'tomato',
+        marginLeft:"auto",
+        marginRight:"auto",
       },
       scroll:{
         flex:1,
