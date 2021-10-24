@@ -1,5 +1,5 @@
 import React, { useState , useEffect } from 'react';
-import { StyleSheet, Text, View, Image, Pressable, ScrollView, Button, ImageBackground, KeyboardAvoidingView} from 'react-native';
+import { StyleSheet, Text, View, ScrollView,  ImageBackground,TouchableOpacity, TouchableHighlight} from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import Product from './Product';
@@ -53,10 +53,13 @@ function FindPage() {
                 placeholder="ex : 3245413125316"
                 keyboardType="numeric"
                 />
-            <Pressable style={styles.button_find}
-                onPress={()=> findData(barCode)}>
+            <TouchableHighlight style={styles.button_find}
+                onPress={()=> findData(barCode)}
+                activeOpacity={0.5}
+                underlayColor={"#00867d"}
+                >
                 <Text>Rechercher</Text>
-            </Pressable>
+            </TouchableHighlight>
         </View>
         
         {data && 

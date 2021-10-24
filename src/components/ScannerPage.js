@@ -1,5 +1,5 @@
 import React, { useState , useEffect } from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground , Pressable, ScrollView, Button} from 'react-native';
+import { StyleSheet, Text, View, Image, ImageBackground , Pressable, ScrollView, Button, TouchableHighlight} from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import { BarCodeScanner } from 'expo-barcode-scanner';
@@ -88,18 +88,22 @@ function ScannerPage() {
         </View>
       }
       {!userIsScanning &&
-        <Pressable 
+        <TouchableHighlight 
         style={styles.button_scanner}
+        activeOpacity={0.5}
+        underlayColor={"#00867d"}
         onPress={()=> handleScan()}>
           <Text>Scanner</Text>
-        </Pressable>
+        </TouchableHighlight>
       }
       {userIsScanning && 
-        <Pressable 
+        <TouchableHighlight 
         style={styles.button_scanner}
+        activeOpacity={0.5}
+        underlayColor={"#00867d"}
         onPress={()=> handleScan()}>
           <Text>Arreter</Text>
-        </Pressable>
+        </TouchableHighlight>
       }
       {data &&
         <ScrollView style={styles.scroll}>
