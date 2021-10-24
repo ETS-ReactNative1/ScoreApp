@@ -8,6 +8,7 @@ import Home from './src/components/Home';
 import FindPage from './src/components/FindPage';
 import ScannerPage from './src/components/ScannerPage';
 import ShakePage from './src/components/ShakePage';
+import TestRef from './src/components/TestRef';
 
 const Drawer = createDrawerNavigator();
 
@@ -54,6 +55,7 @@ export default function App() {
         <Drawer.Screen name="Rechercher en tapotant" component={FindPage} />
         <Drawer.Screen name="Rechercher en scannant" component={ScannerPage} />
         <Drawer.Screen name="Shake Shake Shake" component={ShakePage} />
+        <Drawer.Screen name="Test ref" component={TestRef} />
         </>
         }
       </Drawer.Navigator>    

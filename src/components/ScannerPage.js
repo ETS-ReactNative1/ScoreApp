@@ -34,6 +34,7 @@ function ScannerPage() {
     useEffect(() => {
         askForCameraPermission();
     }, []);
+    
     //Fonction sur l'event du scan 
     const handleBarCodeScanned = ({ type, data }) => {
         //Passe a false pour fermer la view scan
