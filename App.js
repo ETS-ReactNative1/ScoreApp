@@ -30,16 +30,18 @@ export default function App() {
 
   if (splashScreen === true) {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: "#1E90FF" }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
         <View
           style={{
             flex: 1,
-            alignItems: "center"
+            alignItems: "center",
+            justifyContent: "center",
           }}>
           <Image
-            style={{ width: "100%" , height: "100%"}}
-            source={require("./src/img/background.jpg")}
+            style={{height:350, width:350}}
+            source={require("./src/img/logo_bocal.jpg")}
           />
+          <Text style={styles.sponsor}>présente</Text>
         </View>
       </SafeAreaView>
     );
@@ -49,7 +51,14 @@ export default function App() {
 
   return (
     <NavigationContainer>      
-      <Drawer.Navigator initialRouteName="Home">        
+      <Drawer.Navigator initialRouteName="Home"
+      screenOptions={{
+        drawerStyle: {
+          backgroundColor: 'lightblue',
+          width: 240,
+        },drawerType: "slide",
+      }}
+      >        
         <Drawer.Screen name="Accueil" component={Home} />
         {isLog && <>
         <Drawer.Screen name="Rechercher en tapotant" component={FindPage} />
@@ -69,5 +78,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     justifyContent:"center",
     alignItems:"center",
+  },
+  sponsor:{
+    fontWeight:"bold",
+    fontSize:30,
   },
 });

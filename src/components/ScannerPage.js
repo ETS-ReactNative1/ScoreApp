@@ -156,9 +156,10 @@ const styles = StyleSheet.create({
         width: 300,
         overflow: 'hidden',
         borderRadius: 30,
-        backgroundColor: 'tomato',
         marginLeft:"auto",
         marginRight:"auto",
+        borderWidth:2,
+        borderColor: "#00867d",
       },
       scroll:{
         flex:1,
