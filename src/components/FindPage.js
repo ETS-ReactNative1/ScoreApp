@@ -8,19 +8,25 @@ import background2 from '../img/background2.png';
 
 
 function FindPage() {
-
+//mes states
+    //input code barre
     const [barCode, setBarcode] = useState();
+    //data de la requete
     const [data, setData] = useState();
+    //message d'erreur
     const [message, setMessage] = useState();
+    //refreshing de la page
     const [refresh, setRefresh] = useState();
 
+    //grosse fonction de recherche de data
     function findData(barCode) {
-        console.log(barCode);
+        //appel de la fonction qui requete l'api
         getInfo(barCode);
+        //reset du input
         setBarcode("")
         
     }
-
+    //fonction de requete a l'api
     const getInfo = async (barCode) => {
       fetch(`https://world.openfoodfacts.org/api/v0/product/${barCode}.json`)
          .then((res) => {
@@ -39,7 +45,7 @@ function FindPage() {
          })
          .catch((err) => console.log(err))
      }
-
+     //fonction clear la page
      function clearData() {
        setRefresh(true);
        setData()
@@ -50,10 +56,12 @@ function FindPage() {
   return (
     <ImageBackground source={background2} resizeMode="cover" style={styles.image}>
         <ScrollView style={styles.body}
+            /* pour refresh la page */
             refreshControl={
             <RefreshControl
                 refreshing={refresh}
                 onRefresh={clearData}/>}>
+            {/* ****** */}
             <View style={styles.find_top}>
                 <Text style={styles.title}>Entrez un code barre :</Text>
                 <TextInput 

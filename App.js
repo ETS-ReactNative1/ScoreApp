@@ -12,19 +12,20 @@ import TestRef from './src/components/TestRef';
 
 const Drawer = createDrawerNavigator();
 
-// ajouter refresh pour reset data dans find
-//android ripper on button
-// modal avec fade pour resultat de recherche
 export default function App() {
 
-  const [isLog, setIsLog] =useState(true)
   const [splashScreen, setSplashscreen] = useState(true);
 
+
   useEffect(() => {
-    // set TimeOut permet d'afficher le slpashcreen pendant 2 sec et le set false ensuite
+    // set TimeOut permet d'afficher le slpashcreen pendant 3 sec et le set false ensuite
     setTimeout(() => setSplashscreen(false), 3000);
 
   }, []);
+
+  function modifierHisto(value) {
+    setHisto(value)
+  }
 
   
 
@@ -60,13 +61,10 @@ export default function App() {
       }}
       >        
         <Drawer.Screen name="Accueil" component={Home}/>
-        {isLog && <>
         <Drawer.Screen name="Rechercher en tapotant" component={FindPage} />
         <Drawer.Screen name="Rechercher en scannant" component={ScannerPage} />
         {/* <Drawer.Screen name="Shake Shake Shake" component={ShakePage} /> */}
-        <Drawer.Screen name="Test ref" component={TestRef} />
-        </>
-        }
+        <Drawer.Screen name="Test ref" component={TestRef}/>
       </Drawer.Navigator>    
     </NavigationContainer>
   );
