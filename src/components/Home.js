@@ -1,6 +1,6 @@
 import React  from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
-
+import { StyleSheet, Text, View, Image } from 'react-native';
+//Import des fonts
 import { 
   DancingScript_400Regular,
   DancingScript_500Medium,
@@ -15,15 +15,13 @@ import {
 import { 
   PermanentMarker_400Regular 
 } from '@expo-google-fonts/permanent-marker'
-
+//----//
 import { useFonts } from 'expo-font';
 
 import AppLoading from 'expo-app-loading';
 
-
-
-
 function Home() {
+
   let [fontsLoaded, error ]=useFonts({
     DancingScript_400Regular,
     DancingScript_500Medium,
@@ -31,7 +29,6 @@ function Home() {
     DancingScript_700Bold,
     Gugi_400Regular,
     PermanentMarker_400Regular 
-  
   })
 
   if (!fontsLoaded) {
@@ -39,7 +36,6 @@ function Home() {
   }
 
   return (
-    //<ImageBackground source={background} resizeMode="cover" style={styles.image}>
       <View style={styles.container}>
         <View style={styles.logo_container}>
           <Text style={styles.text_logo}>Rate'N'Eat</Text>
@@ -55,7 +51,6 @@ function Home() {
           <Text style={styles.slogan_bot}>... mangez eco-responsable!"</Text>
         </View>
       </View>
-    //</ImageBackground>
   );
 }
 
@@ -103,6 +98,3 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
-//#4db6ac
-//#82e9de
-//#00867d

@@ -45,7 +45,7 @@ function ScannerPage() {
         //Log du scan
         console.log('Type: ' + type + '\nData: ' + data)
     };
-
+    //demande de permission pour utiliser la camera
     if (hasPermission === null) {
         return (
           <View style={styles.container}>
@@ -60,6 +60,7 @@ function ScannerPage() {
           </View>)
       }
 
+      //fonction qui requet l'api avec le code bar
       const getInfo = async (barCode) => {
         fetch(`https://world.openfoodfacts.org/api/v0/product/${barCode}.json`)
            .then((res) => {
@@ -79,6 +80,8 @@ function ScannerPage() {
            })
            .catch((err) => console.log(err))
        }
+      
+       //fonction qui clear la page au refresh
        function clearData() {
         setRefresh(true);
         setData()
@@ -87,43 +90,44 @@ function ScannerPage() {
 
   return (<>
     <ImageBackground source={background} resizeMode="cover" style={styles.image}>
-    <ScrollView style={styles.container}
-    refreshControl={
-      <RefreshControl
+      <ScrollView style={styles.container}
+        /* refresh de la page au swipe down */
+        refreshControl={
+        <RefreshControl
           refreshing={refresh}
           onRefresh={clearData}/>}>
-      {userIsScanning && 
-        <View style={styles.barcodebox}>
-          <BarCodeScanner
-            onBarCodeScanned={handleBarCodeScanned}
-            style={{ height: 400, width: 400 }} />
-        </View>
-      }
-      {!userIsScanning &&
-        <TouchableHighlight 
-        style={styles.button_scanner}
-        activeOpacity={0.5}
-        underlayColor={"#00867d"}
-        onPress={()=> handleScan()}>
-          <Text>Scanner</Text>
-        </TouchableHighlight>
-      }
-      {userIsScanning && 
-        <TouchableHighlight 
-        style={styles.button_scanner}
-        activeOpacity={0.5}
-        underlayColor={"#00867d"}
-        onPress={()=> handleScan()}>
-          <Text>Arreter</Text>
-        </TouchableHighlight>
-      }
-      {data &&
-        <View style={styles.scroll}>
-          <Product data={data}/>
-        </View>
-      }
-    </ScrollView>
-      </ImageBackground>
+        {userIsScanning && 
+          <View style={styles.barcodebox}>
+            <BarCodeScanner
+              onBarCodeScanned={handleBarCodeScanned}
+              style={{ height: 400, width: 400 }} />
+          </View>
+        }
+        {!userIsScanning &&
+          <TouchableHighlight 
+            style={styles.button_scanner}
+            activeOpacity={0.5}
+            underlayColor={"#00867d"}
+            onPress={()=> handleScan()}>
+            <Text>Scanner</Text>
+          </TouchableHighlight>
+        }
+        {userIsScanning && 
+          <TouchableHighlight 
+            style={styles.button_scanner}
+            activeOpacity={0.5}
+            underlayColor={"#00867d"}
+            onPress={()=> handleScan()}>
+            <Text>Arreter</Text>
+          </TouchableHighlight>
+        }
+        {data &&
+          <View style={styles.scroll}>
+            <Product data={data}/>
+          </View>
+        }
+      </ScrollView>
+    </ImageBackground>
   </>
   );
 }

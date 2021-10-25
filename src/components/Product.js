@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 
 function Product({data}) {
@@ -89,6 +89,3 @@ const styles = StyleSheet.create({
 });
 
 export default Product;
-//#4db6ac
-//#82e9de
-//#00867d
