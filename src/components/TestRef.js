@@ -1,6 +1,8 @@
 import React, { useState , useEffect } from 'react';
 import { StyleSheet, Text, View, ScrollView,  ImageBackground,TouchableOpacity, TouchableHighlight, RefreshControl} from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -8,13 +10,9 @@ import { TextInput } from 'react-native-gesture-handler';
 
 function FindPage() {
 
-    
-
-   
-
   return (
         <ScrollView style={styles.body}>
-            <Text>Page de test</Text>
+            <Text>Test</Text>
         </ScrollView>
   );
 }

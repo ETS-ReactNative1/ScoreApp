@@ -63,7 +63,7 @@ export default function App() {
         {isLog && <>
         <Drawer.Screen name="Rechercher en tapotant" component={FindPage} />
         <Drawer.Screen name="Rechercher en scannant" component={ScannerPage} />
-        <Drawer.Screen name="Shake Shake Shake" component={ShakePage} />
+        {/* <Drawer.Screen name="Shake Shake Shake" component={ShakePage} /> */}
         <Drawer.Screen name="Test ref" component={TestRef} />
         </>
         }
