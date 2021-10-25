@@ -63,8 +63,8 @@ export default function App() {
         <Drawer.Screen name="Accueil" component={Home}/>
         <Drawer.Screen name="Rechercher en tapotant" component={FindPage} />
         <Drawer.Screen name="Rechercher en scannant" component={ScannerPage} />
-        {/* <Drawer.Screen name="Shake Shake Shake" component={ShakePage} /> */}
-        <Drawer.Screen name="Test ref" component={TestRef}/>
+        <Drawer.Screen name="Shake Shake Shake" component={ShakePage} />
+        {/* <Drawer.Screen name="Test ref" component={TestRef}/> */}
       </Drawer.Navigator>    
     </NavigationContainer>
   );

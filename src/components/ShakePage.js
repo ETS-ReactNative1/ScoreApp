@@ -40,9 +40,13 @@ function ShakePage() {
   
   return (
     <View style={{ flex: 1, alignItems: "center" }}>
-      <Text>Titre</Text>
+      <Text>Acceleration axe X</Text>
       {motionData && <Text>{motionData?.acceleration.x}</Text>}
       {showData && <Text>{data}</Text>}
+      <Text>Rotation : </Text>
+      {motionData && <Text>{motionData?.rotation.alpha}</Text>}
+      {motionData && <Text>{motionData?.rotation.beta}</Text>}
+      {motionData && <Text>{motionData?.rotation.gamma}</Text>}
     </View>
   );
 }
