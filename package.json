@@ -8,9 +8,15 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo-google-fonts/dancing-script": "^0.2.0",
+    "@expo-google-fonts/gugi": "^0.2.0",
+    "@expo-google-fonts/permanent-marker": "^0.2.0",
     "@react-navigation/drawer": "^6.1.8",
     "@react-navigation/native": "^6.0.6",
     "expo": "~42.0.1",
+    "expo-app-loading": "1.1.2",
+    "expo-barcode-scanner": "~10.2.2",
+    "expo-sensors": "~10.2.2",
     "expo-status-bar": "~1.0.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -18,8 +24,7 @@
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "~3.4.0",
     "react-native-web": "~0.13.12",
-    "expo-barcode-scanner": "~10.2.2",
-    "expo-sensors": "~10.2.2"
+    "@react-native-async-storage/async-storage": "~1.15.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
