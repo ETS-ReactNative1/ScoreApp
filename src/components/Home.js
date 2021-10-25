@@ -8,12 +8,15 @@ function Home() {
   return (
     //<ImageBackground source={background} resizeMode="cover" style={styles.image}>
       <View style={styles.container}>
-        <Text style={styles.text_logo}>Rate'N'Eat</Text>
-        <Image
-        style={styles.logo}
-        source={require('../img/001.png')}
-        resizeMode="contain"
-        />
+        <View style={styles.logo_container}>
+          <Text style={styles.text_logo}>Rate'N'Eat</Text>
+          <Image
+          style={styles.logo}
+          source={require('../img/001.png')}
+          resizeMode="contain"
+          />
+
+        </View>
         <View style={styles.slogan_container}> 
           <Text style={styles.slogan_top}>"Mangez raisonnable ...</Text>
           <Text style={styles.slogan_bot}>... mangez eco-responsable!"</Text>
@@ -27,6 +30,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent:"space-around",
+    alignItems:"center",
+    backgroundColor: "#4db6ac"
+  },
+  logo_container:{
     alignItems:"center",
   },
   image:{

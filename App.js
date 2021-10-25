@@ -54,12 +54,12 @@ export default function App() {
       <Drawer.Navigator initialRouteName="Home"
       screenOptions={{
         drawerStyle: {
-          backgroundColor: 'lightblue',
+          backgroundColor: '#4db6ac',
           width: 240,
         },drawerType: "slide",
       }}
       >        
-        <Drawer.Screen name="Accueil" component={Home} />
+        <Drawer.Screen name="Accueil" component={Home}/>
         {isLog && <>
         <Drawer.Screen name="Rechercher en tapotant" component={FindPage} />
         <Drawer.Screen name="Rechercher en scannant" component={ScannerPage} />
