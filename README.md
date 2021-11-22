@@ -1,6 +1,6 @@
 # Score My Food
 
-Application pour scanner les codes barres des articles alimentaire, afin de récupérer leurs Nutriscore et EcoScore
+Application mobile pour scanner les codes barres des articles alimentaire, afin de récupérer leurs Nutriscore et EcoScore
 
 ## Technos : 
 - Expo
