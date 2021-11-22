@@ -12,6 +12,7 @@ Application pour scanner les codes barres des articles alimentaire, afin de réc
 - openfoodfact
 
 ## Installation  :
-### 'npm i'
+### `npm i`
 
 ## Utilisation : 
+### `expo start`
